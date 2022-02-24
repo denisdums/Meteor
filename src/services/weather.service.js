@@ -18,10 +18,10 @@ const weatherService = {
     },
     async getWeatherByCityName(name) {
         const rawWeather = await weatherRepository.getWeatherByCityName(name);
-        if (rawWeather.name){
+        if (rawWeather.name) {
             const weather = weatherFactory.formatRawWeatherToWeather(rawWeather);
             return weather;
-        }else {
+        } else {
             return {notFound: true}
         }
     },
@@ -31,6 +31,11 @@ const weatherService = {
         const weatherForecast = weatherFactory.formatRawWeatherForecastToWeatherForecast(rawWeatherForecast)
         return weatherForecast;
     },
+    async getCurrentWeatherByCoords(coords) {
+        const rawWeather = await weatherRepository.getCurrentWeatherByLocation(coords)
+        const weather = weatherFactory.formatRawWeatherToWeather(rawWeather)
+        return weather;
+    }
 }
 
 export default weatherService;
