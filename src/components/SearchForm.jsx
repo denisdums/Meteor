@@ -1,8 +1,8 @@
 import {Component} from "react";
 import weatherService from "../services/weather.service";
 import WeatherCard from "./cards/WeatherCard";
-import SunCard from "./cards/SunCard";
-import AddToFavs from "./AddToFavs";
+import weatherBg from "../assets/img/weather-bg.svg";
+
 
 class SearchForm extends Component {
     constructor(props) {
@@ -27,11 +27,13 @@ class SearchForm extends Component {
 
     render() {
         return (
-            <div className='flex flex-col gap-6'>
-                <form onSubmit={this.handleSubmit}>
-                    <fieldset>
+            <div className='flex flex-col'>
+                <h1 className='text-2xl font-bold'>Recherchez une ville</h1>
+                <p className='italic font-light'>Par exemple "Paris"...</p>
+                <form onSubmit={this.handleSubmit} className='mt-6 mb-16'>
+                    <fieldset className='flex justify-center bg-bottom bg-no-repeat bg-contain md:bg-cover'>
                         <input type="search" id='search' placeholder='Recherchez une ville' name='search'
-                               className='bg-light-grey w-full h-10 rounded px-4 focus:outline-none focus:ring-2 ring-blue'
+                               className='bg-light-grey w-11/12 h-10 transform translate-y-1/2 rounded px-4 focus:outline-none focus:ring-2 ring-blue'
                                onChange={this.handleChange}/>
                     </fieldset>
                 </form>

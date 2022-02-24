@@ -9,6 +9,7 @@ import markerCurrent from '../assets/img/marker-current.svg';
 import favsService from "../services/favs.service";
 import weatherService from "../services/weather.service";
 import MarkerToggle from "./MarkerToggle";
+import SkeletonMap from "./SkeletonMap";
 
 const Map = ReactMapboxGl({accessToken: process.env.REACT_APP_API_MAP_KEY});
 
@@ -102,7 +103,7 @@ class MapContainer extends Component {
                                          data-lon={this.state.markerWeather.coords.lon}/>
                                 </Marker>
                             ) : ''}
-                        </Map>) : ''
+                        </Map>) : (<SkeletonMap/>)
                 }
                 <div
                     className={`absolute z-50 bottom-0 lef-0 w-full transform transition-all ${this.state.markerWeather ? 'translate-y-0' : 'translate-y-full'}`}>

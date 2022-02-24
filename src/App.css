@@ -6,6 +6,8 @@
 
 .container {
   padding: 0 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .map-container {

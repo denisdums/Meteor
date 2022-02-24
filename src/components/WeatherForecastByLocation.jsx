@@ -1,6 +1,7 @@
 import {Component} from "react";
 import weatherService from "../services/weather.service";
 import ForecastCard from "./cards/ForecastCard";
+import SkeletonForecastCard from "./cards/SkeletonForecastCard";
 
 class WeatherForecastByLocation extends Component {
     constructor(props) {
@@ -19,8 +20,17 @@ class WeatherForecastByLocation extends Component {
         return (
             <div className='flex flex-col gap-6 mt-6 pb-32'>
                 {this.state.weatherForecast.length > 0 ? this.state.weatherForecast.map((forecast) => (
-                   <ForecastCard key={forecast.time} forecast={forecast}/>
-                )) : ''}
+                    <ForecastCard key={forecast.time} forecast={forecast}/>
+                )) :
+                    <>
+                        <SkeletonForecastCard/>
+                        <SkeletonForecastCard/>
+                        <SkeletonForecastCard/>
+                        <SkeletonForecastCard/>
+                        <SkeletonForecastCard/>
+                        <SkeletonForecastCard/>
+                    </>
+                }
 
             </div>
         )

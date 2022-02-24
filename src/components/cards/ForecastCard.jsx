@@ -1,5 +1,4 @@
 function ForecastCard({forecast}) {
-
     return (
         <div className='w-full p-6 rounded-xl bg-light-grey bg-opacity-30 flex gap-6'>
             <div className='w-12 h-12 overflow-hidden relative'>

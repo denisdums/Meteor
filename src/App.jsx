@@ -1,4 +1,5 @@
 import './App.css';
+import 'react-loading-skeleton/dist/skeleton.css'
 import {Outlet} from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";

@@ -13,9 +13,9 @@ function Navbar() {
     const activePath = useLocation().pathname;
 
     return (
-        <nav className='z-10 fixed w-full bg-white bottom-0 left-0'>
-            <ul className='w-full flex justify-evenly'>
-                <li className={`${linkClasses} ${activePath === '/home' ? activeClasses : inactiveClasses}`}><Link to='/home'><img className={iconClasses} src={home_icon} alt=""/></Link></li>
+        <nav className='z-10 fixed w-full bg-white bottom-0 container left-1/2 -translate-x-1/2'>
+            <ul className='w-full flex justify-around'>
+                <li className={`${linkClasses} ${activePath === '/' ? activeClasses : inactiveClasses}`}><Link to='/'><img className={iconClasses} src={home_icon} alt=""/></Link></li>
                 <li className={`${linkClasses} ${activePath === '/favs' ? activeClasses : inactiveClasses}`} ><Link to='/favs'><img className={iconClasses} src={star_icon} alt=""/></Link></li>
                 <li className={`${linkClasses} ${activePath === '/search' ? activeClasses : inactiveClasses}`}><Link to='/search'><img className={iconClasses} src={search_icon} alt=""/></Link></li>
                 <li className={`${linkClasses} ${activePath === '/map' ? activeClasses : inactiveClasses}`}><Link to='/map'><img className={iconClasses} src={map_icon} alt=""/></Link></li>
