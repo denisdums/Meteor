@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import locationHelper from "../helpers/location.helper";
 import markerIcon from '../assets/img/marker.svg';
 import markerHome from '../assets/img/marker-black.svg';
-import markerCurrent from '../assets/img/marker-yellow.svg';
+import markerCurrent from '../assets/img/marker-current.svg';
 import favsService from "../services/favs.service";
 import weatherService from "../services/weather.service";
 import MarkerToggle from "./MarkerToggle";
