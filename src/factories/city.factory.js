@@ -1,8 +1,9 @@
 const cityFactory = {
     formatRawCityDataToCoordinates(RawCityData) {
+        console.log()
         return {
-            lat: RawCityData.latt,
-            lon: RawCityData.longt,
+            lat: RawCityData.coord.lat,
+            lon: RawCityData.coord.lon,
         }
     },
 }

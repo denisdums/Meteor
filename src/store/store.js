@@ -3,6 +3,6 @@ import favs from './reducers/favsReducer'
 
 export default configureStore({
     reducer: {
-        favs: favs
+        favs: favs,
     }
 })
