@@ -1,45 +1,67 @@
-import {Component, createRef} from "react";
+import {Component} from "react";
 import {connect} from "react-redux";
-import mapboxgl from 'mapbox-gl';
+import ReactMapboxGl, {Marker} from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import locationHelper from "../helpers/location.helper";
+import markerIcon from '../assets/img/marker.svg';
+import markerHome from '../assets/img/marker-black.svg';
+import favsService from "../services/favs.service";
 
-mapboxgl.accessToken = process.env.REACT_APP_API_MAP_KEY;
+const Map = ReactMapboxGl({accessToken: process.env.REACT_APP_API_MAP_KEY});
 
 class MapContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             listOfFavs: [],
-            favsWeathers: {},
-            lon: -70.9,
-            lat: 42.35,
-            zoom: 9,
+            favsWeathers: [],
+            lon: null,
+            lat: null,
+            zoom: 4,
         }
-        this.map = createRef()
-        this.mapContainer = createRef()
     }
 
     async componentDidMount() {
-        const map = await this.initMap()
+        const localisation = await locationHelper.getLocalisation();
+        this.setState({lon: localisation.lon})
+        this.setState({lat: localisation.lat})
+        await this.syncFavsWeather();
     }
 
-    async initMap(){
-        if (this.map.current) return;
-        const localisation = await locationHelper.getLocalisation();
-        this.map.current = new mapboxgl.Map({
-            container: this.mapContainer.current,
-            style: process.env.REACT_APP_API_MAP_STYLE,
-            center: [localisation.lon, localisation.lat],
-            zoom: this.state.zoom
-        });
+    async syncFavsWeather() {
+        const favsWeathers = await favsService.getFavsWeather(this.props.listOfFavs);
+        this.setState({favsWeathers: favsWeathers});
+    }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.listOfFavs !== this.props.listOfFavs) {
+            this.setState({listOfFavs: this.props.listOfFavs});
+            await this.syncFavsWeather();
+        }
     }
 
     render() {
         return (
-            <div>
-                <div ref={this.mapContainer} className="map-container"/>
-            </div>
+            <>
+                {
+                    this.state.lon ? (
+                        <Map
+                            style={process.env.REACT_APP_API_MAP_STYLE}
+                            className='map-container'
+                            zoom={[this.state.zoom]}
+                            center={[this.state.lon, this.state.lat]}>
+                            <Marker coordinates={[this.state.lon, this.state.lat]} anchor='bottom'>
+                                <img id={'marker-home'} src={markerHome}/>
+                            </Marker>
+                            {this.state.favsWeathers.length > 0 ? (
+                                this.state.favsWeathers.map((fav) => (
+                                    <Marker key={fav.city} coordinates={[fav.coords.lon, fav.coords.lat]} anchor='bottom'>
+                                        <img id={`marker-${fav.city}`} src={markerIcon}/>
+                                    </Marker>
+                                ))) : ''}
+                        </Map>) : ''
+                }
+            </>
         )
     }
 }

@@ -12,6 +12,10 @@ const weatherFactory = {
             wind: rawWeather.wind.speed,
             sunrise: weatherHelper.convertTimestampToTime(rawWeather.sys.sunrise),
             sunset: weatherHelper.convertTimestampToTime(rawWeather.sys.sunset),
+            coords: {
+                lat: rawWeather.coord.lat,
+                lon: rawWeather.coord.lon
+            }
         }
     },
     async formatRawWeatherForecastToWeatherForecast(rawWeatherForecast) {
@@ -19,7 +23,7 @@ const weatherFactory = {
         let forecast = [];
         forecastArray.map((item, index) => {
             forecast.push({
-                time:weatherHelper.getForecastTimeByIndex(index),
+                time: weatherHelper.getForecastTimeByIndex(index),
                 temperature: weatherHelper.getRoundedTemp(item.temp),
                 description: item.weather[0].description,
                 icon: weatherHelper.getWeatherIconUrl(item.weather[0].icon)

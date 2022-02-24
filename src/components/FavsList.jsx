@@ -9,7 +9,7 @@ class FavsList extends Component {
         super(props);
         this.state = {
             listOfFavs: [],
-            favsWeathers: {},
+            favsWeathers: [],
         }
     }
 
