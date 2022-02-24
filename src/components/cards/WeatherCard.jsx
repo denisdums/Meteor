@@ -13,7 +13,7 @@ function WeatherCard({weather}) {
                 <div className='w-full flex justify-between items-center'>
                     <div className='w-24 h-24 overflow-hidden relative'>
                         <img src={weather.icon} alt='icon'
-                             className='w-32 h-32 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 object-cover object-center'/>
+                             className='w-full h-full object-contain object-centerr'/>
                     </div>
                     <div className='flex flex-col justify-center items-center'>
                             <span

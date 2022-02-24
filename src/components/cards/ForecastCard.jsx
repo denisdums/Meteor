@@ -3,7 +3,7 @@ function ForecastCard({forecast}) {
         <div className='w-full p-6 rounded-xl bg-light-grey bg-opacity-30 flex gap-6'>
             <div className='w-12 h-12 overflow-hidden relative'>
                 <img src={forecast.icon} alt='icon'
-                     className='w-16 h-16 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 object-cover object-center'/>
+                     className='w-full h-full object-contain object-center'/>
             </div>
             <div className='w-full flex justify-between items-center'>
                 <div className='flex flex-col'>

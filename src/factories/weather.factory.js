@@ -7,7 +7,7 @@ const weatherFactory = {
             temperature: weatherHelper.getRoundedTemp(rawWeather.main.temp),
             feels: weatherHelper.getRoundedTemp(rawWeather.main.feels_like),
             name: rawWeather.weather[0].main,
-            description: rawWeather.weather[0].description,
+            description: weatherHelper.capitalizeWeatherDescription(rawWeather.weather[0].description),
             icon: weatherHelper.getWeatherIconUrl(rawWeather.weather[0].icon),
             wind: rawWeather.wind.speed,
             sunrise: weatherHelper.convertTimestampToTime(rawWeather.sys.sunrise),
@@ -25,7 +25,7 @@ const weatherFactory = {
             forecast.push({
                 time: weatherHelper.getForecastTimeByIndex(index),
                 temperature: weatherHelper.getRoundedTemp(item.temp),
-                description: item.weather[0].description,
+                description: weatherHelper.capitalizeWeatherDescription(item.weather[0].description),
                 icon: weatherHelper.getWeatherIconUrl(item.weather[0].icon)
             })
         })

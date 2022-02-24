@@ -1,6 +1,40 @@
 const weatherHelper = {
     getWeatherIconUrl(iconID) {
-        return `https://openweathermap.org/img/wn/${iconID}@2x.png`
+        let icon
+        switch (iconID) {
+            case '01d' :
+                icon = `/img/sun/26.png`;
+                break;
+            case '02d' :
+                icon = `/img/sun/27.png`;
+                break;
+            case '03d' :
+                icon = `/img/cloud/35.png`;
+                break;
+            case '04d' :
+                icon = `/img/cloud/35.png`;
+                break;
+            case '09d' :
+                icon = `/img/cloud/7.png`;
+                break;
+            case '10d' :
+                icon = `/img/sun/8.png`;
+                break;
+            case '11d' :
+                icon = `/img/cloud/12.png`;
+                break;
+            case '13d' :
+                icon = `/img/cloud/23.png`;
+                break;
+            case '50d' :
+                icon = `/img/snow/36.png`;
+                break;
+            default :
+                icon = `/img/sun/26.png`;
+                break;
+        }
+        return process.env.REACT_APP_URI + icon;
+
     },
     getRoundedTemp(temp) {
         return Math.round(temp)
@@ -23,7 +57,11 @@ const weatherHelper = {
         }
         provisionalTime = (provisionalTime < 10) ? '0' + provisionalTime : provisionalTime;
         return provisionalTime;
+    },
+    capitalizeWeatherDescription: function (desc) {
+        return desc.charAt(0).toUpperCase() + desc.slice(1);
     }
+
 }
 
 export default weatherHelper
