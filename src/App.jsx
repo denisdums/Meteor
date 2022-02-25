@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar";
 import {Component} from "react";
 import {initFavs} from "./store/reducers/favsReducer";
 import {connect} from "react-redux";
+import CookieConsent from "react-cookie-consent";
+import Cookies from "./components/Cookies";
+
 
 class App extends Component {
     constructor(props) {
@@ -26,6 +29,7 @@ class App extends Component {
                 <main>
                     <Outlet/>
                 </main>
+                <Cookies/>
                 <Navbar/>
             </div>
         )

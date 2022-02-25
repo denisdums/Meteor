@@ -1,8 +1,12 @@
+import {getCookieConsentValue} from "react-cookie-consent";
+
 const cookiesHelper = {
     setFavsCookie(listOfFavs) {
-        const expiration = this.getCookieExpirationDate();
-        console.log(expiration)
-        return document.cookie = "favs=" + JSON.stringify(listOfFavs) + ";expires=" + expiration + ";path=/";
+        if (this.getCookieConsent) {
+            const expiration = this.getCookieExpirationDate();
+            return document.cookie = "favs=" + JSON.stringify(listOfFavs) + ";expires=" + expiration + ";path=/";
+        }
+        return null
     },
     getFavsCookie() {
         return this.getCookie('favs') ?? [];
@@ -20,7 +24,10 @@ const cookiesHelper = {
         let expiration = new Date();
         expiration.setMonth(expiration.getMonth() + 12)
         return expiration;
-    }
+    },
+    getCookieConsent() {
+        return getCookieConsentValue('cookieConsent') === 'true';
+    },
 }
 
 export default cookiesHelper
