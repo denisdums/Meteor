@@ -1,7 +1,7 @@
 import {Component} from "react";
 import weatherService from "../services/weather.service";
 import ForecastCard from "./cards/ForecastCard";
-import SkeletonForecastCard from "./cards/SkeletonForecastCard";
+import SkeletonForecastCard from "./skeleton/SkeletonForecastCard";
 
 class WeatherForecastByLocation extends Component {
     constructor(props) {

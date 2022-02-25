@@ -59,11 +59,11 @@ class MapContainer extends Component {
     }
 
     async handleClickMap(map, event) {
-        if (this.state.markerWeather != null) {
-            this.setState({markerWeather: null})
-        } else {
-            await this.updateMarker({lon: event.lngLat.lng, lat: event.lngLat.lat})
-        }
+        await this.updateMarker({lon: event.lngLat.lng, lat: event.lngLat.lat})
+    }
+
+    closeMarker() {
+        this.setState({markerWeather: null})
     }
 
     render() {
@@ -107,7 +107,8 @@ class MapContainer extends Component {
                 }
                 <div
                     className={`absolute z-50 bottom-0 lef-0 w-full transform transition-all ${this.state.markerWeather ? 'translate-y-0' : 'translate-y-full'}`}>
-                    {this.state.markerWeather ? (<MarkerToggle weather={this.state.markerWeather}/>) : ''}
+                    {this.state.markerWeather ? (
+                        <MarkerToggle weather={this.state.markerWeather} closeMarker={() => this.closeMarker()}/>) : ''}
                 </div>
             </div>
         )

@@ -1,7 +1,6 @@
 import {Component} from "react";
 import weatherService from "../services/weather.service";
 import WeatherCard from "./cards/WeatherCard";
-import weatherBg from "../assets/img/weather-bg.svg";
 
 
 class SearchForm extends Component {
@@ -31,10 +30,11 @@ class SearchForm extends Component {
                 <h1 className='text-2xl font-bold'>Recherchez une ville</h1>
                 <p className='italic font-light'>Par exemple "Paris"...</p>
                 <form onSubmit={this.handleSubmit} className='mt-6 mb-16'>
-                    <fieldset className='flex justify-center bg-bottom bg-no-repeat bg-contain md:bg-cover'>
+                    <fieldset className='flex justify-center bg-bottom bg-no-repeat bg-contain md:bg-cover items-center gap-2'>
                         <input type="search" id='search' placeholder='Recherchez une ville' name='search'
-                               className='bg-light-grey w-11/12 h-10 transform translate-y-1/2 rounded px-4 focus:outline-none focus:ring-2 ring-blue'
+                               className='border border-light-grey bg-light-grey w-11/12 h-10 transform rounded px-4 focus:outline-none focus:ring-2 ring-blue'
                                onChange={this.handleChange}/>
+                        <input type="submit" value='Rechercher' className='bg-blue text-white rounded p-2 hover:bg-blue-tone transition-all cursor-pointer'/>
                     </fieldset>
                 </form>
                 {this.state.search && this.state.weatherResult ? (

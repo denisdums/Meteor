@@ -6,7 +6,7 @@ import map_icon from '../assets/img/map.svg';
 import {useLocation} from "react-router-dom";
 
 function Navbar() {
-    const linkClasses = 'py-2 border-b-4  transition-all';
+    const linkClasses = 'py-4 border-b-4  transition-all';
     const activeClasses = 'border-blue';
     const inactiveClasses = 'border-white';
     const iconClasses = 'w-6';

@@ -49,7 +49,7 @@ const weatherHelper = {
     getNextDayForecast(forecast) {
         return forecast.slice(0, 24)
     },
-    getForecastTimeByIndex: function (index) {
+    getForecastTimeByIndex(index) {
         const currentTime = new Date().getHours();
         let provisionalTime = currentTime + index + 1;
         if (provisionalTime >= 24) {
@@ -58,10 +58,20 @@ const weatherHelper = {
         provisionalTime = (provisionalTime < 10) ? '0' + provisionalTime : provisionalTime;
         return provisionalTime;
     },
-    capitalizeWeatherDescription: function (desc) {
+    capitalizeWeatherDescription(desc) {
         return desc.charAt(0).toUpperCase() + desc.slice(1);
+    },
+    getCurrentTime(shift) {
+        const offset = new Date().getTimezoneOffset() * 60;
+        const currentUTCTimestamp = Math.round(Date.now() / 1000) + offset;
+        const currentWeatherTimestamp = currentUTCTimestamp + shift;
+        const currentTime = this.convertTimestampToTime(currentWeatherTimestamp)
+        return currentTime;
+    },
+    convertMPerHourIntoKMPerHour(value){
+        const speed = Math.round(value * 3.6)
+        return speed;
     }
-
 }
 
 export default weatherHelper

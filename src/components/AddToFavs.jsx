@@ -38,7 +38,7 @@ class AddToFavs extends Component {
 
     render() {
         return (
-            <button className='w-6 h-6 bg-light-grey rounded bg-50 bg-center bg-no-repeat absolute top-4 right-4'
+            <button className='w-6 h-6 bg-light-grey rounded bg-50 bg-center bg-no-repeat'
                     style={{backgroundImage: `url(${this.state.star ? star : starEmpty})`}}
                     onClick={() => this.handleFav()}/>
         )

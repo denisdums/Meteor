@@ -2,8 +2,8 @@ import {Component} from "react";
 import SunCard from "./cards/SunCard";
 import WeatherCard from "./cards/WeatherCard";
 import weatherService from "../services/weather.service";
-import SkeletonWeatherCard from "./cards/SkeletonWeatherCard";
-import SkeletonSunCard from "./cards/SkeletonSunCard";
+import SkeletonWeatherCard from "./skeleton/SkeletonWeatherCard";
+import SkeletonSunCard from "./skeleton/SkeletonSunCard";
 
 class CurrentWeatherByLocation extends Component {
     constructor(props) {
